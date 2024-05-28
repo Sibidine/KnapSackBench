@@ -7,7 +7,6 @@ limit = 1500
 items = len(weights)
 
 # constants
-area = [0,items**2-1]
 temperature = 12
 iterations = 1200
 step_size = 0.1
@@ -27,13 +26,5 @@ def objective_function(knapsack):
     return objective_value
 
 
-def convert_number_to_binary(number):
-
-    binary_number = []
-    while number > 0:
-        binary_number.append(number % 2)
-        number = number//2
-    
-    return list(reversed(binary_number))
 
 
