@@ -1,5 +1,6 @@
 import random
 import collections
+
 # contraints
 items = 4
 weights = [7, 2, 5, 9]
@@ -43,14 +44,14 @@ In case the weight limit is exceeded, fitness for that member is set to 0.
     """
     fitness_values = []
     for member in population:
-        fitness = 0
+        fitness_sum = 0
         weight_sum = 0
-        for i in range(len(member)):
-            fitness = fitness + member[i]*values[i]
+        for i in range(len(member)):  
+            fitness_sum = fitness_sum + member[i]*values[i]
             weight_sum = weight_sum + member[i]*weights[i]
         if(weight_sum > limit):
-            fitness = 0
-        fitness_values.append(fitness)
+            fitness_sum = 0
+        fitness_values.append(fitness_sum)
     return fitness_values
 
 def population_fitness_map(population, fitness_values):
@@ -113,7 +114,7 @@ A bit is flipped randomly according to the mutation rate
         for i in range(len(parent)):
             if random.random() < MUTATION_RATE:
                 bit = lambda bit: 0 if bit == 1 else 1
-                parent[i] = bit
+                parent[i] = bit(parent[i])
 
     return parents
 
@@ -141,10 +142,14 @@ def next_generation(population):
 
 def solve_knapsack():
     population = generate_intial_population()
-
-    for i in range(50):
-        population = next_generation(population)
+    average_fitness = []
     
+    for i in range(50):
+        average_fitness_value = sum(fitness(population))/len(population)
+        population = next_generation(population)
+        average_fitness.append(average_fitness_value)
+
+    print(average_fitness)
     return population
 
 def main():
