@@ -10,6 +10,7 @@ items = len(weights)
 temperature = 12
 iterations = 1200
 step_size = 0.1
+final_temperature = 5
 
 
 def objective_function(knapsack):
@@ -25,6 +26,28 @@ def objective_function(knapsack):
     
     return objective_value
 
+def flipped(bit):
+    if bit == 0:
+        return 1
+    else:
+        return 0
 
 
+def find_neighbours(member):
 
+    neighbours = []
+    for i in range(len(member)):
+        single_neighbour = member[:i] + list(flipped(member[i])) + member[i+1:]
+        neighbours.append(single_neighbour)
+    
+    return neighbours
+
+def generate_initial_permutation():
+
+    member = [
+        random.choice([0,1])
+        for i in range(items)
+    ]
+
+    return member
+    
