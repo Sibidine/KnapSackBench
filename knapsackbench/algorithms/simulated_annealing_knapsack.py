@@ -15,7 +15,11 @@ final_temperature = 5
 
 
 def objective_function(knapsack):
+    """
+    objective function value calculated as the sum of values picked by the
+    knapsack configuration
 
+    """
     objective_value = 0
     weight_sum = 0    
     for i in range(len(knapsack)):
@@ -28,6 +32,10 @@ def objective_function(knapsack):
     return objective_value
 
 def flipped(bit):
+    """
+    returns the complement of the supplied bit
+
+    """
     if bit == 0:
         return 1
     else:
@@ -35,6 +43,11 @@ def flipped(bit):
 
 
 def find_neighbours(member):
+    """
+    finds all neighbours with a 1 bit difference to the supplied 
+    configuration
+
+    """
 
     neighbours = []
     for i in range(len(member)):
@@ -44,7 +57,10 @@ def find_neighbours(member):
     return neighbours
 
 def generate_initial_permutation():
+    """
+    generates an initial configuration
 
+    """
     member = [
         random.choice([0,1])
         for i in range(items)
@@ -53,7 +69,14 @@ def generate_initial_permutation():
     return member
 
 def simulated_annealing():
+    """
+    The neighbour with the better objective function value is
+    selected at every step.
 
+    The metropolis acceptance criterion is used
+    in order to prevent rapid convergence to local optima.
+
+    """
     initial_objective = 0
 
     while initial_objective == 0:
