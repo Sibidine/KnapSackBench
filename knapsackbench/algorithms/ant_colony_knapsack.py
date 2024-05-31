@@ -149,7 +149,7 @@ def ant_colony_optimisation(probability_list, weights, values, items, limit, com
     
 
     ant_colony_data = {}
-    ant_colony_data["total_profit"] = global_profit
+    ant_colony_data["max_profit"] = global_profit
     ant_colony_data["profit_history"] = global_profit_tracker
     
     solution_set = []
