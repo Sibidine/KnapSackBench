@@ -5,17 +5,17 @@ import models
 
 app = FastAPI()
 
-@app.get('/genetic', status_code=status.HTTP_200_OK)
+@app.post('/genetic', status_code=status.HTTP_200_OK)
 def genetic(request: models.Constraints):
     response =  genetic_knapsack.solve_knapsack()
     return response
 
-@app.get('/simulated_annealing', status_code=status.HTTP_200_OK)
+@app.post('/simulated_annealing', status_code=status.HTTP_200_OK)
 def simulated_annealing(request: models.Constraints):
     respone =  simulated_annealing_knapsack.simulated_annealing()
     return response
 
-@app.get('/ant_colony', status_code=status.HTTP_200_OK)
+@app.post('/ant_colony', status_code=status.HTTP_200_OK)
 def ant_colony(request: models.Constraints):
     response =  ant_colony_knapsack.main()
     return response
