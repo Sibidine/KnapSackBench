@@ -161,15 +161,21 @@ def ant_colony_optimisation(probability_list):
         probability_list = generate_transition_list(complete_search_space)
         iteration_number += 1
     
-    return [global_profit, global_profit_tracker, global_solution_set]
+
+    ant_colony_data = {}
+    ant_colony_data["total_profit"] = global_profit
+    ant_colony_data["profit_history"] = global_profit_tracker
+    ant_colony_data["solution_set"] = global_solution_set
+
+    return ant_colony_data
         
 
 def main():
 
-    probability_list = generate_transition_list(complete_search_space)
-    print(ant_colony_optimisation(probability_list)[0])
+    ant_colony_data = generate_transition_list(complete_search_space)
+    return ant_colony_data
 
-main()
+
 
 
 

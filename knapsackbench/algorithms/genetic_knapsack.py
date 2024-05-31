@@ -151,11 +151,15 @@ def solve_knapsack():
         population = next_generation(population)
         average_fitness.append(average_fitness_value)
 
-    return (average_fitness, population)
+    genetic_data = {}
+    genetic_data["top_fitness"] = average_fitness[4999]
+    genetic_data["average_fitnesses"] = average_fitness
+    genetic_data["best_population"] = population
+    return genetic_data
 
 def main():
     solution = solve_knapsack()
-    print(solution[0][4999])
+    print(solution["average_fitnesses"][4999])
     # print(solution[1])
 
 main()
