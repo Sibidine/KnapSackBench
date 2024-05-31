@@ -1,3 +1,5 @@
+### KnapSackBench
+
 KnapSackBench benchmarks the performance of various non-traditional optimisation algorithms-
 
 - Genetic Algorithms
