@@ -88,9 +88,9 @@ def simulated_annealing():
     coefficient = 1
 
     metrics = {}
-    metrics["solutions_checked"] = 0
     metrics["improvements"] = 0
     metrics["random_steps"] = 0
+    metrics["solutions_history"] = []
 
     while temperature/coefficient > final_temperature:
 
@@ -120,6 +120,7 @@ def simulated_annealing():
         
         metrics["improvements"] += improvements_current
         metrics["random_steps"] += random_steps_current
+        metrics["solutions_history"].append(best_objective)
         coefficient += 1
 
     metrics["best_config"] = best_config
