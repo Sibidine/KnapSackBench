@@ -100,7 +100,6 @@ def simulated_annealing():
 
         while i < step_size:
 
-            metrics["solutions_checked"] += 1
             list_of_neighbours = find_neighbours(initial_config)
             random_neighbour = list_of_neighbours[random.randint(0, len(list_of_neighbours)-1)]
             random_neighbour_objective = objective_function(random_neighbour)
