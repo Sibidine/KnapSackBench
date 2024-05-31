@@ -1,6 +1,6 @@
 # KnapSackBench
 
-KnapSackBench utilises the [0-1 Knapsack Problem](https://en.wikipedia.org/wiki/Knapsack_problem) benchmarks the performance of various non-traditional optimisation algorithms-
+KnapSackBench utilises the [0-1 Knapsack Problem](https://en.wikipedia.org/wiki/Knapsack_problem) to benchmark the performance of various non-traditional optimisation algorithms-
 
 - [Genetic Algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm)
 - [Simulated Annealing](https://en.wikipedia.org/wiki/Simulated_annealing)
