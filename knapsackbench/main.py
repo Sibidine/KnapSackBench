@@ -1,16 +1,21 @@
 from fastapi import FastAPI, status, HTTPException
 from algorithms import genetic_knapsack, simulated_annealing_knapsack, ant_colony_knapsack
+import models
+
 
 app = FastAPI()
 
 @app.get('/genetic', status_code=status.HTTP_200_OK)
-def genetic():
-    return genetic_knapsack.solve_knapsack()
+def genetic(request: models.Constraints):
+    response =  genetic_knapsack.solve_knapsack()
+    return response
 
 @app.get('/simulated_annealing', status_code=status.HTTP_200_OK)
-def SA():
-    return simulated_annealing_knapsack.simulated_annealing()
+def simulated_annealing(request: models.Constraints):
+    respone =  simulated_annealing_knapsack.simulated_annealing()
+    return response
 
 @app.get('/ant_colony', status_code=status.HTTP_200_OK)
-def ACO():
-    return ant_colony_knapsack.main()
+def ant_colony(request: models.Constraints):
+    response =  ant_colony_knapsack.main()
+    return response

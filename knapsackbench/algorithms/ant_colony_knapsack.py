@@ -146,7 +146,6 @@ def ant_colony_optimisation(probability_list):
             if local_profit > ant_profit:
                 ant_profit = local_profit
                 ant_solution_set = local_solution_set
-                global_profit_tracker.append(ant_profit)
             
             result_of_k_ants[ant] = [local_profit, local_solution_set]
 
@@ -154,7 +153,7 @@ def ant_colony_optimisation(probability_list):
         if ant_profit > global_profit:
             global_profit = ant_profit
             global_solution_set = ant_solution_set
-
+        global_profit_tracker.append(global_profit)
 
         tau = update_pheromones(result_of_k_ants, global_profit)
         tau = evaporate()
@@ -166,7 +165,15 @@ def ant_colony_optimisation(probability_list):
     ant_colony_data = {}
     ant_colony_data["total_profit"] = global_profit
     ant_colony_data["profit_history"] = global_profit_tracker
-    ant_colony_data["solution_set"] = global_solution_set
+    
+    solution_set = []
+    for i in range(100):
+        if i in global_solution_set.keys():
+            solution_set.append(1)
+        else:
+            solution_set.append(0)
+    ant_colony_data["solution_set"] = solution_set
+
 
     return ant_colony_data
         
