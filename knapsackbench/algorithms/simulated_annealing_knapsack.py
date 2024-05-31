@@ -133,4 +133,4 @@ def main():
     metrics = simulated_annealing()
     print(metrics["best_objective"])
 
-main()
+
