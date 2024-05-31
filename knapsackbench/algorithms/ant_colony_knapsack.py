@@ -2,13 +2,6 @@ import random
 import math
 import copy
 
-
-# contraints
-weights = [21, 12, 30, 24, 45, 47, 41, 36, 38, 45, 4, 17, 1, 42, 26, 19, 12, 27, 15, 4, 5, 4, 21, 7, 23, 45, 18, 7, 29, 44, 18, 3, 8, 4, 38, 23, 34, 35, 29, 32, 44, 34, 44, 24, 8, 4, 36, 16, 34, 33, 27, 36, 26, 25, 25, 47, 20, 6, 13, 35, 42, 49, 11, 39, 30, 21, 26, 25, 33, 38, 16, 5, 42, 20, 39, 9, 6, 46, 44, 50, 44, 2, 28, 50, 26, 44, 4, 50, 47, 29, 22, 17, 37, 1, 19, 47, 28, 24, 25, 16]
-values = [96, 99, 52, 100, 46, 43, 22, 20, 84, 73, 53, 83, 52, 56, 22, 59, 15, 6, 69, 61, 22, 41, 63, 56, 13, 17, 1, 42, 49, 16, 67, 2, 12, 96, 98, 4, 50, 87, 25, 84, 82, 63, 1, 38, 91, 69, 38, 64, 25, 58, 99, 85, 29, 69, 36, 99, 9, 26, 82, 9, 54, 81, 74, 15, 44, 36, 48, 59, 15, 91, 65, 17, 57, 94, 79, 69, 47, 27, 57, 25, 32, 92, 89, 80, 93, 18, 52, 63, 92, 67, 39, 75, 82, 61, 9, 93, 6, 53, 12, 39]
-limit = 1500
-items = len(weights)
-
 # constants
 alpha = 3
 beta = 2
@@ -16,16 +9,9 @@ ant_count = 10
 rho = 0.2
 iterations = 500
 
-# dictionary of {index : [value, weight]} elements
-complete_search_space = {i : [int(values[i]), int(weights[i])] for i in range(items)}
+   
 
-# tau defaults to 10 before ACO
-tau = {i : 10 for i in range(items)}
-
-# formula used for attractiveness (mu) = value/(weight/knapsack capacity)
-mu =  {i : (values[i]*limit/weights[i]) for i in range(items)}
-
-def generate_transition_list(search_space):
+def generate_transition_list(search_space, tau, mu):
     """
     Calculates the probability to be selected for each element in the knapsack.
     
@@ -91,7 +77,7 @@ def normalise(probability_list):
         probability_list[i] = probability_list[i]/sum_of_probabilities
     return probability_list
 
-def update_pheromones(result_of_k_ants, global_profit):
+def update_pheromones(result_of_k_ants, global_profit, tau):
     """
     updates global pheromone values for each element in the knapsack
     """
@@ -102,7 +88,7 @@ def update_pheromones(result_of_k_ants, global_profit):
             tau[j] = tau[j] + delta_tau
     return tau
 
-def evaporate():
+def evaporate(tau):
     """
     controls evaporation rate for pheromones
     """
@@ -111,7 +97,7 @@ def evaporate():
     return tau
 
 
-def ant_colony_optimisation(probability_list):
+def ant_colony_optimisation(probability_list, weights, values, items, limit, complete_search_space, tau, mu):
 
     iteration_number = 0
     global_profit = -1
@@ -155,10 +141,10 @@ def ant_colony_optimisation(probability_list):
             global_solution_set = ant_solution_set
         global_profit_tracker.append(global_profit)
 
-        tau = update_pheromones(result_of_k_ants, global_profit)
-        tau = evaporate()
+        tau = update_pheromones(result_of_k_ants, global_profit, tau)
+        tau = evaporate(tau)
 
-        probability_list = generate_transition_list(complete_search_space)
+        probability_list = generate_transition_list(complete_search_space, tau, mu)
         iteration_number += 1
     
 
@@ -178,10 +164,25 @@ def ant_colony_optimisation(probability_list):
     return ant_colony_data
         
 
-def main():
+def main(request):
 
-    probability_list = generate_transition_list(complete_search_space)
-    return ant_colony_optimisation(probability_list)
+    weights = request.weights
+    values = request.values
+    items = request.items
+    limit = request.limit
+
+
+    # dictionary of {index : [value, weight]} elements
+    complete_search_space = {i : [int(values[i]), int(weights[i])] for i in range(items)}
+
+    # tau defaults to 10 before ACO
+    tau = {i : 10 for i in range(items)}
+
+    # formula used for attractiveness (mu) = value/(weight/knapsack capacity)
+    mu =  {i : (values[i]*limit/weights[i]) for i in range(items)}
+
+    probability_list = generate_transition_list(complete_search_space, tau, mu)
+    return ant_colony_optimisation(probability_list, weights, values, items, limit, complete_search_space, tau, mu)
 
 
 
