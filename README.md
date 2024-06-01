@@ -42,5 +42,5 @@ References:
 
 - Schiff, Krzysztof. “Ant colony optimization algorithm for the 0-1 knapsack problem.” (2013).
 
-- [Arpit BHayani's blog](https://arpitbhayani.me/blogs/genetic-knapsack/)
+- [Arpit Bhayani's blog](https://arpitbhayani.me/blogs/genetic-knapsack/)
 
