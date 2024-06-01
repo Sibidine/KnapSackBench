@@ -160,8 +160,8 @@ def particle_swarm():
         iteration_number += 1
         historical_Gbest.append(fitness(Gbest))
     # print(historical_Gbest)
-    particle_swarm_data["global_best_configuration"] = Gbest
     particle_swarm_data["global_best_value"] = fitness(Gbest)
+    particle_swarm_data["global_best_configuration"] = Gbest
     particle_swarm_data["historical_global_bests"] = historical_Gbest
 
     return particle_swarm_data
