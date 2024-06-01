@@ -137,6 +137,7 @@ def particle_swarm():
     Gbest = []
     historical_Gbest = []
     iteration_number = 0
+    particle_swarm_data = {}
     while iteration_number < iterations:
 
         for i in range(no_of_particles):
@@ -158,13 +159,17 @@ def particle_swarm():
         
         iteration_number += 1
         historical_Gbest.append(fitness(Gbest))
-    print(historical_Gbest)
-    return fitness(Gbest)
+    # print(historical_Gbest)
+    particle_swarm_data["global_best_configuration"] = Gbest
+    particle_swarm_data["global_best_value"] = fitness(Gbest)
+    particle_swarm_data["historical_global_bests"] = historical_Gbest
+
+    return particle_swarm_data
 
 
 def main():
 
-    print(particle_swarm())
+    print(particle_swarm()["global_best_value"])
 
 
 main()
