@@ -73,3 +73,10 @@ def ant_colony(request: models.Constraints):
     if not response:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail={'detail': 'model under maintenance, please try again later'})
     return response
+
+@app.post('/particle_swarm', status_code=status.HTTP_200_OK)
+def particle_swarm(request: models.Constraints):
+    """
+
+    """
+    return response
