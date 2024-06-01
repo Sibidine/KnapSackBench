@@ -11,8 +11,8 @@ items = len(weights)
 
 no_of_particles = 50
 omega = 0.729
-alpha = 1.9
-beta = 1.1
+alpha = 1.49
+beta = 1.49
 iterations = 100
 
 def fitness(particle):
@@ -168,6 +168,8 @@ def particle_swarm():
 
 
 def main():
+
+    
 
     print(particle_swarm()["global_best_value"])
 
