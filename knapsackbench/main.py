@@ -1,5 +1,5 @@
 from fastapi import FastAPI, status, HTTPException
-from algorithms import genetic_knapsack, simulated_annealing_knapsack, ant_colony_knapsack
+from algorithms import genetic_knapsack, simulated_annealing_knapsack, ant_colony_knapsack, particle_swarm
 import models
 
 
@@ -77,6 +77,20 @@ def ant_colony(request: models.Constraints):
 @app.post('/particle_swarm', status_code=status.HTTP_200_OK)
 def particle_swarm(request: models.Constraints):
     """
+    Uses Particle Swarm Optimisation to find an optimised solution.
 
+    Returned data:
+
+    {
+
+        global_best_configuration: list(int) - a list of 100 binary integers denoting the optimal knapsack solution.
+
+        global_best_value: int - the highest fitness value attained by the optimisation algorithm
+
+        historical_global_bests: list(int) -  a list of the best fitness values for all particles attained at each iteration.
+    }
     """
+    response = particle_swarm.main()
+    if not response:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail={'detail': 'model under maintenance, please try again later'})
     return response

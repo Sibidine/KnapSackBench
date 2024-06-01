@@ -176,9 +176,7 @@ def main(request):
     limit = request.limit
     items = request.items
 
-    print(particle_swarm()["global_best_value"])
+    return particle_swarm()
 
-
-main()
 
         
