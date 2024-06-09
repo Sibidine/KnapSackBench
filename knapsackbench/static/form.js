@@ -14,8 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const selectedAlgorithms = Array.from(document.querySelectorAll('input[name="algorithms"]:checked'))
-                                         .map(checkbox => checkbox.value);
+        const selectedAlgorithms = ['genetic', 'simulated_annealing', 'ant_colony', 'particle_swarm']
 
         const data = {
             weights: weights,
