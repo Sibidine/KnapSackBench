@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Algorithms</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Optimization Algorithms</h1>
+        <form id="optimizationForm">
+            <label for="weights">Weights (comma separated):</label>
+            <input type="text" id="weights" name="weights" required>
+
+            <label for="values">Values (comma separated):</label>
+            <input type="text" id="values" name="values" required>
+
+            <label for="limit">Limit:</label>
+            <input type="number" id="limit" name="limit" required>
+
+            <label for="items">Number of Items:</label>
+            <input type="number" id="items" name="items" readonly>
+
+            <fieldset>
+                <legend>Select Algorithms</legend>
+                <label><input type="checkbox" name="algorithms" value="genetic"> Genetic Algorithm</label>
+                <label><input type="checkbox" name="algorithms" value="simulated_annealing"> Simulated Annealing</label>
+                <label><input type="checkbox" name="algorithms" value="ant_colony"> Ant Colony Optimization</label>
+                <label><input type="checkbox" name="algorithms" value="particle_swarm"> Particle Swarm Optimization</label>
+            </fieldset>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="/static/form.js"></script>
+</body>
+</html>

@@ -1,9 +1,26 @@
 from fastapi import FastAPI, status, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from algorithms import genetic_knapsack, simulated_annealing_knapsack, ant_colony_knapsack, particle_swarm_knapsack
 import models
+import os
+
+script_dir = os.path.dirname(__file__)
+st_abs_file_path = os.path.join(script_dir, "static/")
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory=st_abs_file_path), name="static")
+
+# Serve HTML files
+@app.get("/", response_class=FileResponse)
+async def read_index():
+    return "static/index.html"
+
+@app.get("/results.html", response_class=FileResponse)
+async def read_results():
+    return "static/results.html"
+
 
 @app.post('/genetic', status_code=status.HTTP_200_OK)
 def genetic(request: models.Constraints):

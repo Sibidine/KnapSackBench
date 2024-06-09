@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Results</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Optimization Results</h1>
+        <div class="results">
+            <div id="genetic-results" class="result-section">
+                <h2>Genetic Algorithm Results</h2>
+                <div id="top-fitness"></div>
+            </div>
+            <div id="fitness-chart-container" class="result-section">
+                <h2>Average Fitness Over Generations</h2>
+                <canvas id="fitness-chart"></canvas>
+            </div>
+        </div>
+        <div id="responses"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/results.js"></script>
+</body>
+</html>
