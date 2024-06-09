@@ -9,14 +9,46 @@
 <body>
     <div class="container">
         <h1>Optimization Results</h1>
-        <div class="results">
-            <div id="genetic-results" class="result-section">
-                <h2>Genetic Algorithm Results</h2>
-                <div id="top-fitness"></div>
+        <div class="algo">
+            <div class="results">
+                <div id="genetic-results" class="result-section">
+                    <h2>Genetic Algorithm Results</h2>
+                    <div id="top-fitness"></div>
+                </div>
+                <div id="fitness-chart-container" class="result-section">
+                    <h2>Average Fitness Over Generations</h2>
+                    <canvas id="fitness-chart"></canvas>
+                </div>
             </div>
-            <div id="fitness-chart-container" class="result-section">
-                <h2>Average Fitness Over Generations</h2>
-                <canvas id="fitness-chart"></canvas>
+            <div class="results">
+                <div id="simulated_annealing-results" class="result-section">
+                    <h2>Simulated Annealing Results</h2>
+                    <div id="best-objective"></div>
+                </div>
+                <div id="best-objective-container" class="result-section">
+                    <h2>Objective values Over Generations</h2>
+                    <canvas id="best-objective-chart"></canvas>
+                </div>
+            </div>
+            <div class="results">
+                <div id="ant-colony-results" class="result-section">
+                    <h2>Ant Colony Results</h2>
+                    <div id="best-solution"></div>
+                </div>
+                <div id="best-solution-container" class="result-section">
+                    <h2>Best solution Over Generations</h2>
+                    <canvas id="best-solution-chart"></canvas>
+                </div>
+            </div>
+            <div class="results">
+                <div id="particle-swarm-results" class="result-section">
+                    <h2>Particle Swarm Results</h2>
+                    <div id="best-config"></div>
+                </div>
+                <div id="best-config-container" class="result-section">
+                    <h2>Best configuration value Over Generations</h2>
+                    <canvas id="best-config-chart"></canvas>
+                </div>
             </div>
         </div>
         <div id="responses"></div>

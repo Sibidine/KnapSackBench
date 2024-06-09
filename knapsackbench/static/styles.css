@@ -59,6 +59,10 @@ button:hover {
     margin-top: 20px;
 }
 
+.algo {
+    margin-top: 10px;
+}
+
 .result-section {
     flex: 1;
     margin-right: 20px;
@@ -80,6 +84,6 @@ button:hover {
 }
 
 #fitness-chart {
-    width: 100%;
+    width: 150%;
     height: 400px;
 }
